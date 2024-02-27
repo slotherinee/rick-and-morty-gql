@@ -16,3 +16,18 @@ export const query = gql`
     }
   }
 `
+
+export const queryCharacter = gql`
+  query getCharacter($id: ID!) {
+    character(id: $id) {
+      name
+      image
+      status
+      id
+      species
+      location {
+        name
+      }
+    }
+  }
+`

@@ -9,7 +9,7 @@ const CharacterCard = ({
 }: CharacterCardProps) => {
   const grayscale = status === 'Dead' ? 'grayscale' : ''
   return (
-    <div className='flex m-3 bg-gray-300 rounded-xl'>
+    <div className='flex m-3 bg-gray-100 rounded-xl'>
       <img
         src={image}
         alt={name}
