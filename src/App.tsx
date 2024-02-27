@@ -8,7 +8,7 @@ export default function App() {
   if (error) return <p>{error.message}</p>
   return (
     <div>
-      <h1 className='text-center text-3xl mb-5'>My first Apollo app 🚀</h1>
+      <h1 className='text-center text-3xl mb-5'>Rick and Morty info 🚀</h1>
       {loading ? (
         <div className='flex items-center justify-center h-screen'>
           <h1 className='text-3xl'>Loading...</h1>

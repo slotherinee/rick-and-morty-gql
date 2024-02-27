@@ -7,12 +7,13 @@ const CharacterCard = ({
   species,
   location,
 }: CharacterCardProps) => {
+  const grayscale = status === 'Dead' ? 'grayscale' : ''
   return (
     <div className='flex m-3 bg-gray-300 rounded-xl'>
       <img
         src={image}
         alt={name}
-        className='rounded-xl'
+        className={`rounded-l-xl ${grayscale}`}
         width='200'
         height='200'
       />
