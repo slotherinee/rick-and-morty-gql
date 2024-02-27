@@ -12,7 +12,7 @@ const NotFound: React.FC = () => {
         <i>{(error as Error).message}</i>
       </p>
       <Link to='/' className='text-blue-600 underline mt-4'>
-        Go back to home
+        Go back home
       </Link>
     </div>
   )
