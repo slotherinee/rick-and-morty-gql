@@ -16,10 +16,7 @@ export default function App() {
       ) : (
         <div className='grid grid-cols-2 gap-4'>
           {data?.characters.results.map(character => (
-            <Link
-              to={`/rick-and-morty-gql/characters/${character.id}`}
-              key={character.id}
-            >
+            <Link to={`/characters/${character.id}`} key={character.id}>
               <CharacterCard key={character.id} {...character} />
             </Link>
           ))}

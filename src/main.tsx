@@ -10,12 +10,12 @@ import NotFound from './components/NotFound.tsx'
 
 const router = createBrowserRouter([
   {
-    path: '/rick-and-morty-gql/',
+    path: '/',
     element: <App />,
     errorElement: <NotFound />,
   },
   {
-    path: '/rick-and-morty-gql/characters/:id',
+    path: '/characters/:id',
     element: <CharacterCardInfo />,
     errorElement: <NotFound />,
   },
