@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 import { queryCharacter } from '../gql/ramQuery'
 import Spinner from './ui/spinner'
@@ -10,6 +10,12 @@ const CharacterCardInfo = () => {
     variables: { id },
   })
 
+  const navigate = useNavigate()
+
+  const goBack = () => {
+    navigate(-1)
+  }
+
   if (error) return <p>{error.message}</p>
   if (loading || !data) return <Spinner />
 
@@ -20,7 +26,7 @@ const CharacterCardInfo = () => {
   }
 
   return (
-    <div className='flex flex-col items-center justify-center h-screen'>
+    <div className='flex flex-col h-screen justify-center items-center'>
       <img
         src={character.image}
         alt={character.name}
@@ -33,12 +39,13 @@ const CharacterCardInfo = () => {
       <h4 className='text-base mb-2'>Status: {character.status}</h4>
       <h5 className='text-base mb-2'>Species: {character.species}</h5>
       <p className='text-base'>Location: {character.location.name}</p>
-      <Link to={'/'}>
-        <button className='bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded mt-10 flex items-center'>
-          <FaArrowLeft className='mr-2' />
-          Go back
-        </button>
-      </Link>
+      <button
+        className='bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded mt-10 flex items-center'
+        onClick={goBack}
+      >
+        <FaArrowLeft className='mr-2' />
+        Go back
+      </button>
     </div>
   )
 }

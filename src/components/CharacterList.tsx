@@ -1,16 +1,24 @@
+import { useState } from 'react'
 import { useQuery } from '@apollo/client'
-import Spinner from './ui/spinner'
+import { queryCharacterPagination } from '../gql/ramQuery'
 import { CharactersResult } from '../types/CharacterTypes'
 import CharacterCard from './CharacterCard'
 import { Link } from 'react-router-dom'
-import { query } from '../gql/ramQuery'
+import PaginationList from './PaginationList'
+import Spinner from './ui/spinner'
 
 const CharacterList = () => {
-  const { loading, error, data } = useQuery<CharactersResult>(query)
+  const [currentPage, setCurrentPage] = useState(1)
+  const { loading, error, data } = useQuery<CharactersResult>(
+    queryCharacterPagination,
+    {
+      variables: { page: currentPage },
+    }
+  )
   if (error) return <p>{error.message}</p>
   return (
-    <div>
-      <h1 className='text-center text-3xl mb-5'>Rick and Morty info 🚀</h1>
+    <main>
+      <h1 className='text-center text-3xl mb-5 mt-5'>Rick and Morty info 🚀</h1>
       {loading ? (
         <Spinner />
       ) : (
@@ -22,7 +30,11 @@ const CharacterList = () => {
           ))}
         </div>
       )}
-    </div>
+      <PaginationList
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
+    </main>
   )
 }
 
